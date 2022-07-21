@@ -1,36 +1,36 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar class="px-16 shadow-0" elevation="0" app color="dark2">
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink mr-6"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          :src="require('./assets/logo.svg')"
           transition="scale-transition"
-          width="40"
+          width="30"
         />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <div class="white--text text-h5">
+          <span>super</span><span class="primary--text">Heroes</span>
+        </div>
       </div>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <v-tabs
+        class="mx-16"
+        slider-color="primary"
+        sliderSize="4"
+        fixed-tabs
+        background-color="transparent"
+        dark
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+        <v-tab> Home </v-tab>
+        <v-tab> Plans </v-tab>
+        <v-tab> Courses </v-tab>
+        <v-tab> About </v-tab>
+        <v-tab> Team </v-tab>
+        <v-tab> FAQ </v-tab>
+      </v-tabs>
+      <v-btn outlined class="white--text rounded-xl"> Sign Up </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -48,3 +48,11 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap");
+
+* {
+  font-family: "Cairo", sans-serif;
+}
+</style>
