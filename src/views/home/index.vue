@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="second-section-cont">
+    <div id="plans" class="second-section-cont">
       <div class="second-section">
         <div class="text-h4 white--text text-center mb-16 font-weight-bold">
           Some Of Our Awesome Plans

@@ -27,7 +27,7 @@
         <v-tab> Plans </v-tab>
         <v-tab @click="$router.push('courses')"> Courses </v-tab>
         <v-tab> About </v-tab>
-        <v-tab> Team </v-tab>
+        <v-tab @click="$router.push('team')"> Team </v-tab>
         <v-tab> FAQ </v-tab>
       </v-tabs>
       <v-btn
