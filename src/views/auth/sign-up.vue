@@ -12,11 +12,8 @@
             contain
             :src="require('../../assets/logo.svg')"
             transition="scale-transition"
-            width="30"
+            width="10"
           />
-          <div class="white--text text-h5">
-            <span>Super</span><span class="primary--text">Heroes</span>
-          </div>
         </div>
 
         <v-text-field

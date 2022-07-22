@@ -23,7 +23,7 @@
         background-color="transparent"
         dark
       >
-        <v-tab @click="$router.push('/home')"> Home </v-tab>
+        <v-tab @click="$router.push('/')"> Home </v-tab>
         <v-tab> Plans </v-tab>
         <v-tab @click="$router.push('courses')"> Courses </v-tab>
         <v-tab> About </v-tab>
@@ -44,6 +44,26 @@
         <router-view />
       </transition>
     </v-main>
+    <v-footer dark padless>
+      <v-card flat tile class="indigo lighten-1 white--text text-center">
+        <v-card-text class="white--text p-6">
+          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
+          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
+          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
+          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
+          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
+          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
+          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
+          parturient montes, nascetur ridiculus mus.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
