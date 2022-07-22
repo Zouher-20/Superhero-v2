@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-3 pa-2 rounded-lg dark2 mb-10 card" max-width="260">
-    <div class="rounded-lg" style="height: min-content; overflow: hidden">
+    <div style="height: min-content; overflow: hidden" class="rounded-lg">
       <v-img c :src="image" height="200px" class="image"></v-img>
     </div>
 

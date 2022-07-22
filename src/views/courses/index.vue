@@ -1,7 +1,10 @@
 <template>
-  <div class="px-16 dark">
-    <h2 class="white--text pt-16">Our Courses</h2>
-    <div class="d-flex justify-center mt-16">
+  <div class="dark relative">
+    <div class="header">
+      <h1 class="white--text pt-16 pl-16 title">Our Courses</h1>
+    </div>
+
+    <div class="d-flex justify-center" style="padding-top: 250px">
       <card
         title="hamza"
         discription="The academic qualification for this subject is the basics of programming"
@@ -18,6 +21,7 @@
         image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
       />
     </div>
+    <div class="footer dark"></div>
   </div>
 </template>
 <script>
@@ -26,3 +30,24 @@ export default {
   components: { card },
 };
 </script>
+<style>
+.header {
+  background-image: url("../../assets/courses/Courses.svg");
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 400px;
+}
+.footer {
+  background-image: url("../../assets/courses/footer.svg");
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 300px;
+}
+.title {
+  position: absolute;
+  left: 150px;
+  top: 30px;
+}
+</style>
