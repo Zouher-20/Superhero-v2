@@ -1,18 +1,26 @@
 import axios from "../../axios";
+
 export default {
+  namespaced: true,
   state: {
     items: [],
   },
-  getters: {},
   mutations: {
     setItems(state, payload) {
-      state.item = payload;
+      state.items = payload;
     },
   },
   actions: {
-    getItems({ commit }) {
-      const x = axios.get("").then((response) => response.data);
-      commit("setItems", x);
+    async getItems({ commit }) {
+      const x = await axios
+        .get("http://shopware5.skyfy.me/assets/lms/public/api/courses")
+        .then((response) => response.data);
+      commit("setItems", x.data);
+    },
+  },
+  getters: {
+    items(state) {
+      return state.items;
     },
   },
 };

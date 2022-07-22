@@ -3,30 +3,37 @@
     <div class="header">
       <h1 class="white--text pt-16 pl-16 title">Our Courses</h1>
     </div>
-
     <div class="d-flex justify-center" style="padding-top: 350px">
       <card
-        title="hamza"
-        discription="The academic qualification for this subject is the basics of programming"
-        image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-      />
-      <card
-        title="hamza"
-        discription="The academic qualification for this subject is the basics of programming"
-        image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-      />
-      <card
-        title="hamza"
-        discription="The academic qualification for this subject is the basics of programming"
+        v-for="course in items"
+        :key="course.id"
+        :title="course.name"
+        :discription="course.description"
+        :file="course.file"
         image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
       />
     </div>
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
 import card from "../../components/courses/card.vue";
 export default {
   components: { card },
+  data() {
+    return {
+      item: {},
+    };
+  },
+  methods: {
+    ...mapActions("Courses", ["getItems"]),
+  },
+  computed: {
+    ...mapGetters("Courses", ["items"]),
+  },
+  created() {
+    this.getItems();
+  },
 };
 </script>
 <style>
