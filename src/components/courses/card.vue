@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-3 pa-2 rounded-lg dark2 mb-10 card" max-width="260">
-    <div style="height: min-content; overflow: hidden">
-      <v-img c :src="image" height="200px" class="rounded-lg image"></v-img>
+    <div style="height: min-content; overflow: hidden" class="rounded-lg">
+      <v-img c :src="image" height="200px" class="image"></v-img>
     </div>
 
     <v-card-title class="white--text mb-3"> {{ title }}</v-card-title>
