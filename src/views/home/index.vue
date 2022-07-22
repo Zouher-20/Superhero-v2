@@ -3,12 +3,17 @@
     <div class="first-section-cont">
       <div class="first-section">
         <div
+          id="main-message"
           class="text-h2 white--text text-center font-weight-bold"
           style="line-height: 110px"
         >
           Start the plan that best suits you with SuperHeroes Community
         </div>
-        <div class="text-h6 mt-10 text-center" style="color: #c1c1c1">
+        <div
+          id="sub-message"
+          class="text-h6 mt-10 text-center"
+          style="color: #c1c1c1"
+        >
           Learn and chart your way towards your dream with core team members and
           <br />
           experts in several IT fields through the unique plans that feature our
@@ -54,7 +59,7 @@
         <div class="text-h2 text-center mb-8 mt-16 font-weight-bold">
           About SuperHeroes Community
         </div>
-        <div class="text-h6 mt-10 text-center">
+        <div class="text-h6 mt-10 text-justify">
           It is a platform that helps university students reach their goals and
           dreams by providing a simple plan that provides a step-by-step
           explanation to reach the goal by following up with doctors and
@@ -99,7 +104,11 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Quasi quaerat expedita
+                consequatur? Reiciendis veniam hic dignissimos sit velit ratione
+                atque ipsam possimus expedita, tenetur deserunt sint et, nisi
+                aliquam perferendis!
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -110,6 +119,8 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+
 import planCard from "../../components/plan-card.vue";
 import teamCard from "../../components/team-card.vue";
 export default {
@@ -117,10 +128,29 @@ export default {
     planCard,
     teamCard,
   },
+  mounted() {
+    const WelcomeFade = gsap
+      .timeline({
+        defaults: { duration: 1 },
+      })
+      .set("#main-message", { opacity: 0, top: -50 })
+      .set("#sub-message", { opacity: 0, top: -50 })
+      .to("#main-message", { opacity: 1, top: 0 })
+      .to("#sub-message", { opacity: 1, top: 0 });
+
+    WelcomeFade.restart();
+  },
 };
 </script>
 
 <style lang="scss">
+#main-message {
+  position: relative;
+}
+#sub-message {
+  position: relative;
+}
+
 .home-container {
   display: flex;
   justify-content: center;

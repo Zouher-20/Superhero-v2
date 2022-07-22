@@ -21,7 +21,6 @@
         image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
       />
     </div>
-    <!-- <div class="footer light"></div> -->
   </div>
 </template>
 <script>
@@ -36,15 +35,9 @@ export default {
   background-size: contain;
   position: absolute;
   width: 100%;
-  height: 400px;
+  height: 70%;
 }
-/* .footer {
-  background-image: url("../../assets/courses/footer.svg");
-  background-size: cover;
-  position: absolute;
-  height: 300px;
-  width: 100%;
-} */
+
 .title {
   position: absolute;
   left: 150px;

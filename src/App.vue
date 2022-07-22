@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="dark">
     <v-app-bar class="px-16 shadow-0" elevation="0" app color="dark2">
       <div class="d-flex align-center">
         <v-img
@@ -44,26 +44,34 @@
         <router-view />
       </transition>
     </v-main>
-    <v-footer dark padless>
-      <v-card flat tile class="indigo lighten-1 white--text text-center">
-        <v-card-text class="white--text p-6">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
-          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
-          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus.
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-        </v-card-text>
-      </v-card>
-    </v-footer>
+    <div style="height: 37vh">
+      <div class="footer light">
+        <div
+          class="d-flex items-center justify-between"
+          style="
+            width: 80%;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <img
+            alt="Vuetify Logo"
+            class="mr-6"
+            :src="require('./assets/logo.svg')"
+            transition="scale-transition"
+            width="220"
+            height="220"
+          />
+          <div class="d-flex">
+            <span class="mx-10 text-h6 footer-link" href="">Plans</span>
+            <span class="mx-10 text-h6 footer-link" href="">Courses</span>
+            <span class="mx-10 text-h6 footer-link" href="">About</span>
+            <span class="mx-10 text-h6 footer-link" href="">Teams</span>
+            <span class="mx-10 text-h6 footer-link" href="">FAQ</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </v-app>
 </template>
 
@@ -71,9 +79,7 @@
 export default {
   name: "App",
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 };
 </script>
 
@@ -92,5 +98,26 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+.footer {
+  background-image: url("./assets/courses/footer.svg");
+  background-size: cover;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 140px;
+  bottom: 0px;
+  width: 100%;
+}
+.footer-link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover {
+    text-decoration: underline;
+    color: #6546ed;
+  }
 }
 </style>
