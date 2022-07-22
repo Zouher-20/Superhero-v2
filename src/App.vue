@@ -25,7 +25,7 @@
       >
         <v-tab @click="$router.push('/home')"> Home </v-tab>
         <v-tab> Plans </v-tab>
-        <v-tab> Courses </v-tab>
+        <v-tab @click="$router.push('courses')"> Courses </v-tab>
         <v-tab> About </v-tab>
         <v-tab> Team </v-tab>
         <v-tab> FAQ </v-tab>
