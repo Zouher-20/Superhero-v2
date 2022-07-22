@@ -11,7 +11,7 @@
           width="30"
         />
         <div class="white--text text-h5">
-          <span>super</span><span class="primary--text">Heroes</span>
+          <span>Super</span><span class="primary--text">Heroes</span>
         </div>
       </div>
 
@@ -23,18 +23,26 @@
         background-color="transparent"
         dark
       >
-        <v-tab> Home </v-tab>
+        <v-tab @click="$router.push('/home')"> Home </v-tab>
         <v-tab> Plans </v-tab>
         <v-tab> Courses </v-tab>
         <v-tab> About </v-tab>
         <v-tab> Team </v-tab>
         <v-tab> FAQ </v-tab>
       </v-tabs>
-      <v-btn outlined class="white--text rounded-xl"> Sign Up </v-btn>
+      <v-btn
+        outlined
+        class="white--text radius px-6"
+        @click="$router.push({ name: 'sign-up' })"
+      >
+        Sign Up
+      </v-btn>
     </v-app-bar>
 
-    <v-main>
-      <router-view />
+    <v-main class="light">
+      <transition name="fade" mode="">
+        <router-view />
+      </transition>
     </v-main>
   </v-app>
 </template>
@@ -51,8 +59,18 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap");
+@import "./style/global.scss";
 
 * {
   font-family: "Cairo", sans-serif;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
