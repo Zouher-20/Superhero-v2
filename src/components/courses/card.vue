@@ -7,15 +7,18 @@
     <v-card-title class="white--text mb-3"> {{ title }}</v-card-title>
 
     <v-card-subtitle class="white--text caption color">
-      <p>{{ discription }}</p>
+      <div v-html="discription"></div>
     </v-card-subtitle>
 
     <v-card-actions class="justify-end">
-      <a class="white--text text-decoration-underline download mr-1">
+      <a
+        :href="file"
+        class="white--text text-decoration-underline download mr-1"
+      >
         Download
       </a>
 
-      <a class="dark2">
+      <a :href="file" class="dark2">
         <v-icon color="blue" small> mdi-download</v-icon>
       </a>
     </v-card-actions>
@@ -27,6 +30,7 @@ export default {
     image: String,
     title: String,
     discription: String,
+    file: String,
   },
   data() {
     return {};
