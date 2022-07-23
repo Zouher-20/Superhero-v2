@@ -29,31 +29,7 @@
         </div>
       </div>
     </div>
-    <div id="plans" class="second-section-cont">
-      <div class="second-section">
-        <div class="text-h4 white--text text-center mb-16 font-weight-bold">
-          Some Of Our Awesome Plans
-        </div>
-        <div class="justify-center plan-cont">
-          <plan-card
-            style="width: 33%"
-            v-for="n in 6"
-            :key="n"
-            level="beginner"
-            title="hamza"
-            discription="The academic qualification for this subject is the basics of programming"
-            image="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-          />
-        </div>
-        <div class="d-flex justify-center">
-          <v-btn large class="radius" width="50%" elevation="0" color="primary">
-            <span class="font-weight-bold" style="text-transform: none">
-              See All Our Plans
-            </span>
-          </v-btn>
-        </div>
-      </div>
-    </div>
+
     <div class="third-section-cont">
       <div class="third-section pt-16">
         <div class="text-h2 text-center mb-8 mt-16 font-weight-bold">
@@ -121,11 +97,9 @@
 <script>
 import { gsap } from "gsap";
 
-import planCard from "../../components/plan-card.vue";
 import teamCard from "../../components/team-card.vue";
 export default {
   components: {
-    planCard,
     teamCard,
   },
   mounted() {

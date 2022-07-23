@@ -3,8 +3,8 @@
     <div class="header">
       <h1 class="white--text pt-16 pl-16 title">Our Courses</h1>
     </div>
-    <div class="d-flex justify-center" style="padding-top: 350px">
-      <card
+    <div class="d-flex justify-center pb-16" style="padding-top: 350px">
+      <course
         v-for="course in items"
         :key="course.id"
         :title="course.name"
@@ -17,9 +17,9 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
-import card from "../../components/courses/card.vue";
+import course from "@/components/course/index.vue";
 export default {
-  components: { card },
+  components: { course },
   data() {
     return {
       item: {},
@@ -42,7 +42,7 @@ export default {
   background-size: contain;
   position: absolute;
   width: 100%;
-  height: 70%;
+  height: 50vh;
 }
 
 .title {

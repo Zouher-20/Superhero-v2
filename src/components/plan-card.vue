@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-3 pa-2 rounded-lg dark2 mb-10 card" max-width="260">
+  <v-card class="mx-3 pa-2 rounded-lg dark2 mb-10 card">
     <div style="height: min-content; overflow: hidden" class="rounded-lg">
       <v-img c :src="image" height="200px" class="image"></v-img>
     </div>
@@ -8,7 +8,7 @@
 
     <v-card-subtitle class="white--text d-flex items-center">
       <v-icon class="mr-2" color="grey">mdi-clock</v-icon>
-      <div>15hr</div>
+      <div>{{ hours }}hr</div>
     </v-card-subtitle>
     <v-card-text class="white--text">
       {{ discription }}
@@ -29,6 +29,9 @@ export default {
     title: String,
     level: String,
     discription: String,
+    hours: {
+      type: [String, Number],
+    },
   },
   data() {
     return {};

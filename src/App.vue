@@ -23,12 +23,12 @@
         background-color="transparent"
         dark
       >
-        <v-tab @click="$router.push('/')"> Home </v-tab>
-        <v-tab> Plans </v-tab>
-        <v-tab @click="$router.push('courses')"> Courses </v-tab>
-        <v-tab> About </v-tab>
-        <v-tab @click="$router.push('team')"> Team </v-tab>
-        <v-tab> FAQ </v-tab>
+        <v-tab :to="'/'"> Home </v-tab>
+        <v-tab :to="'/plans'"> Plans </v-tab>
+        <v-tab :to="'/courses'"> Courses </v-tab>
+        <v-tab @click="scrallTo('about')"> About </v-tab>
+        <v-tab :to="'/team'"> Team </v-tab>
+        <v-tab @click="scrallTo('faq')"> FAQ </v-tab>
       </v-tabs>
       <v-btn
         outlined
@@ -44,7 +44,7 @@
         <router-view />
       </transition>
     </v-main>
-    <div style="height: 37vh">
+    <div v-if="true" style="height: 37vh">
       <div class="footer light">
         <div
           class="d-flex items-center justify-between"
@@ -62,12 +62,48 @@
             width="220"
             height="220"
           />
+
           <div class="d-flex">
-            <span class="mx-10 text-h6 footer-link" href="">Plans</span>
-            <span class="mx-10 text-h6 footer-link" href="">Courses</span>
-            <span class="mx-10 text-h6 footer-link" href="">About</span>
-            <span class="mx-10 text-h6 footer-link" href="">Teams</span>
-            <span class="mx-10 text-h6 footer-link" href="">FAQ</span>
+            <v-btn
+              text
+              plain
+              color="white"
+              class="mx-10 text-h6 footer-link"
+              :to="'/'"
+              >Plans</v-btn
+            >
+            <v-btn
+              text
+              plain
+              color="white"
+              class="mx-10 text-h6 footer-link"
+              :to="'/courses'"
+              >Courses</v-btn
+            >
+            <v-btn
+              text
+              plain
+              color="white"
+              class="mx-10 text-h6 footer-link"
+              :to="'/'"
+              >About</v-btn
+            >
+            <v-btn
+              text
+              plain
+              color="white"
+              class="mx-10 text-h6 footer-link"
+              :to="'/teams'"
+              >Teams</v-btn
+            >
+            <v-btn
+              text
+              plain
+              color="white"
+              class="mx-10 text-h6 footer-link"
+              :to="'/'"
+              >FAQ</v-btn
+            >
           </div>
         </div>
       </div>
@@ -80,6 +116,19 @@ export default {
   name: "App",
 
   data: () => ({}),
+  methods: {
+    async scrallTo(id) {
+      this.$router.push({ path: "/" });
+      setTimeout(() => {
+        let element = document.getElementById(id);
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }, 1000);
+    },
+  },
 };
 </script>
 

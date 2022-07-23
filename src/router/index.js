@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import home from "../views/home";
+import homeFix from "../views/home-fix";
 
 Vue.use(VueRouter);
 
@@ -8,6 +9,11 @@ const routes = [
   {
     path: "/",
     name: "home",
+    component: homeFix,
+  },
+  {
+    path: "/home-old",
+    name: "home-old",
     component: home,
   },
   {
@@ -35,6 +41,28 @@ const routes = [
     component: () => import("../views/team/index.vue"),
   },
   {
+    path: "/plans",
+    name: "plans",
+    component: () => import("../views/plans/index.vue"),
+    children: [
+      {
+        path: "",
+        name: "plan-list",
+        component: () => import("../views/plans/components/list/index.vue"),
+      },
+      {
+        path: "plan/:planId",
+        name: "plan",
+        component: () => import("../views/plans/components/plan/index.vue"),
+      },
+      {
+        path: "step/:stepId",
+        name: "plan-step",
+        component: () => import("../views/plans/components/step/index.vue"),
+      },
+    ],
+  },
+  {
     path: "/courses",
     name: "courses",
     // route level code-splitting
@@ -47,6 +75,12 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
+  scrollBehavior(to) {
+    if (to.hash) {
+      return;
+    }
+  },
+
   routes,
 });
 
