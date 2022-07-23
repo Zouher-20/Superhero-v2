@@ -102,7 +102,7 @@ export default {
             this.msg = "login success";
             this.$store.commit("app/setUser", { email: this.email });
             this.$store.commit("app/login");
-
+            this.$router.push("/");
             this.$refs.form.reset();
           }
         }
