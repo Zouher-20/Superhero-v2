@@ -31,12 +31,21 @@
         <v-tab @click="scrallTo('faq')"> FAQ </v-tab>
       </v-tabs>
       <v-btn
+        v-if="!isLogin"
         outlined
         class="white--text radius px-6"
         @click="$router.push({ name: 'sign-up' })"
       >
         Sign Up
       </v-btn>
+      <v-avatar v-else>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <img v-bind="attrs" v-on="on" :src="superImg" alt="John" />
+          </template>
+          <span>{{ user.email }}</span>
+        </v-tooltip>
+      </v-avatar>
     </v-app-bar>
 
     <v-main class="light">
@@ -112,11 +121,38 @@
 </template>
 
 <script>
+// import store from "./store.js";
+
+import superImg from "@/assets/super.webp";
+import { mapGetters } from "vuex";
+import axios from "axios";
 export default {
   name: "App",
 
-  data: () => ({}),
+  data: () => ({
+    superImg,
+    // isLogin: false,
+  }),
+  created() {
+    this.fetchUsers();
+  },
+  computed: {
+    ...mapGetters("app", ["users", "user", "isLogin"]),
+  },
+
   methods: {
+    // ...mapMutations("app", ["setUsers"]),
+    async fetchUsers() {
+      try {
+        let res = await axios.get(
+          "http://webteam-001-site1.ftempurl.com/api/user"
+        );
+        console.log();
+        this.$store.commit("app/setUsers", res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
     async scrallTo(id) {
       this.$router.push({ path: "/" });
       setTimeout(() => {

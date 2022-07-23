@@ -12,7 +12,7 @@
             contain
             :src="require('../../assets/logo.svg')"
             transition="scale-transition"
-            width="30"
+            width="300"
           />
         </div>
 
@@ -21,6 +21,7 @@
           label="Email"
           class="radius mt-1 white--text"
           dark
+          v-model="email"
           color="primary"
           :rules="[(v) => !!v || 'Email is required']"
         />
@@ -49,6 +50,7 @@
             Create an account
           </a>
         </div>
+        <div class="white--text">{{ msg }}</div>
       </v-form>
     </auth-card>
   </section>
@@ -56,6 +58,8 @@
 
 <script>
 import authCard from "@/components/auth/auth-card.vue";
+import axios from "axios";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   components: {
     authCard,
@@ -66,13 +70,42 @@ export default {
       showConf: false,
       valid: true,
       password: "",
+      msg: "",
+      email: "",
     };
   },
+  computed: {
+    ...mapGetters("app", ["users", "user", "isLogin"]),
+  },
   methods: {
-    sumbit() {
+    ...mapMutations("app", ["setUser", "login"]),
+    async sumbit() {
       this.$refs.form.validate();
       if (this.valid) {
         console.log("true");
+        if (this.valid) {
+          var loging = false;
+          let allUsers = [];
+          let res = await axios.get(
+            "http://webteam-001-site1.ftempurl.com/api/user"
+          );
+          allUsers = res.data;
+          allUsers.forEach((el) => {
+            if (el.email === this.email && this.password === el.password) {
+              loging = true;
+            }
+          });
+
+          if (!loging) {
+            this.msg = "wrong";
+          } else {
+            this.msg = "login success";
+            this.$store.commit("app/setUser", { email: this.email });
+            this.$store.commit("app/login");
+
+            this.$refs.form.reset();
+          }
+        }
       }
     },
   },
@@ -83,7 +116,7 @@ export default {
 .auth-container {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 200px;
+  padding-top: 100px;
   height: 90vh;
   .v-text-field--outlined {
     border-radius: 16px;

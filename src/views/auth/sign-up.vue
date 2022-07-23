@@ -12,7 +12,7 @@
             contain
             :src="require('../../assets/logo.svg')"
             transition="scale-transition"
-            width="10"
+            width="300"
           />
         </div>
 
@@ -21,6 +21,7 @@
           label="Email"
           class="radius mt-1 white--text"
           dark
+          v-model="email"
           color="primary"
           :rules="[(v) => !!v || 'Email is required']"
         />
@@ -58,6 +59,7 @@
         <v-btn @click="sumbit" block color="primary" large class="radius mt-1"
           >Create</v-btn
         >
+
         <div class="mt-4 white--text">
           Already have an account ?<a
             @click="$router.push({ name: 'sign-in' })"
@@ -65,6 +67,7 @@
             Login
           </a>
         </div>
+        <div class="white--text">{{ msg }}</div>
       </v-form>
     </auth-card>
   </section>
@@ -72,6 +75,8 @@
 
 <script>
 import authCard from "@/components/auth/auth-card.vue";
+import axios from "axios";
+import { mapGetters } from "vuex";
 export default {
   components: {
     authCard,
@@ -82,13 +87,46 @@ export default {
       showConf: false,
       valid: true,
       password: "",
+      msg: "",
     };
   },
+  computed: {
+    ...mapGetters("app", ["users", "user", "isLogin"]),
+  },
   methods: {
-    sumbit() {
+    async fetchUsers(user) {
+      try {
+        let res = await axios.post(
+          "http://webteam-001-site1.ftempurl.com/api/user",
+          user
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async sumbit() {
       this.$refs.form.validate();
       if (this.valid) {
-        console.log("true");
+        var isAv = true;
+        let allUsers = [];
+        let res = await axios.get(
+          "http://webteam-001-site1.ftempurl.com/api/user"
+        );
+        allUsers = res.data;
+        allUsers.forEach((el) => {
+          if (el.email === this.email) {
+            isAv = false;
+          }
+        });
+
+        if (isAv) {
+          this.fetchUsers({ email: this.email, password: this.password });
+          this.$refs.form.reset();
+          this.msg = "success , you can login now !";
+        } else {
+          this.msg = "this email already exists";
+        }
       }
     },
   },
@@ -99,7 +137,7 @@ export default {
 .auth-container {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 200px;
+  padding-top: 90px;
   height: 90vh;
   .v-text-field--outlined {
     border-radius: 16px;
